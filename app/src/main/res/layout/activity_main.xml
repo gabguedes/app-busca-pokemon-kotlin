@@ -12,6 +12,13 @@
         android:hint="Enter Pokémon ID"
         android:inputType="number" />
 
+    <ImageView
+        android:id="@+id/iv_pokemon_img"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:layout_gravity="center"
+        android:layout_marginVertical="32dp"/>
+
     <Button
         android:id="@+id/btn_search"
         android:layout_width="match_parent"
@@ -19,11 +26,25 @@
         android:text="Search Pokémon" />
 
     <TextView
-        android:id="@+id/tv_pokemon_details"
+        android:id="@+id/tv_pokemon_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="16dp"
-        android:text="Pokémon Details will appear here" />
+        android:text="Pokémon Name will appear here" />
+
+    <TextView
+        android:id="@+id/tv_pokemon_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="16dp"
+        android:text="Pokémon Number will appear here" />
+
+    <TextView
+        android:id="@+id/tv_pokemon_height"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="16dp"
+        android:text="Pokémon Height will appear here" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_sprites"

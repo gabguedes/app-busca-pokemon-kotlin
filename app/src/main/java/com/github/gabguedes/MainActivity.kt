@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
 import com.github.gabguedes.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -28,8 +29,11 @@ class MainActivity : AppCompatActivity() {
         binding.rvSprites.adapter = mainAdapter
 
         viewModel.pokemonResponse.observe(this){ pokemon ->
-            binding.tvPokemonDetails.text = pokemon.name
+            binding.tvPokemonName.text = pokemon.name
+            binding.tvPokemonNumber.text = pokemon.id.toString()
+            binding.tvPokemonHeight.text = pokemon.height.toString()
             mainAdapter.submitList(pokemon.imagesURL)
+            setUpArtwork(pokemon.officialArtwork)
         }
 
         // Configurando o clique do botão de busca
@@ -39,5 +43,12 @@ class MainActivity : AppCompatActivity() {
                 viewModel.fetchPokemon(id)
             }
         }
+    }
+
+    private fun setUpArtwork(url: String) {
+        Glide
+            .with(this)
+            .load(url).error("https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Pokebola-pokeball-png-0.png/640px-Pokebola-pokeball-png-0.png")
+            .into(binding.ivPokemonImg)
     }
 }

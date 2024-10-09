@@ -11,13 +11,23 @@ class PokemonRepository(private val api: PokemonAPI) {
             response.sprites.frontDefault,
             response.sprites.backDefault,
             response.sprites.frontShiny,
-            response.sprites.backShiny
+            response.sprites.backShiny,
         )
+
+        var officialArtwork = "";
+
+        if(response.sprites.officialArtwork.frontDefault != null){
+            officialArtwork = response.sprites.officialArtwork.frontDefault
+
+        }
+
         return Pokemon(
+            response.id,
             response.name,
             response.height,
             response.weight,
-            sprites
+            sprites,
+            officialArtwork
         )
     }
 }
